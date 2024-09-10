@@ -1,0 +1,35 @@
+/* Customize the review slider cards */
+.review-card {
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    height: 28vh;
+    /* margin: 2rem; */
+}
+
+/* Customize the rating stars section */
+.rating {
+    background: #1A237E; /* Background color for the stars */
+    padding: 15px;
+    border-radius: 15px 15px 0 0; /* Rounded corners at the top */
+}
+
+.rating span {
+    color: #ffcc00;
+    font-size: 20px;
+}
+
+/* Customize the arrows */
+.slick-prev, .slick-next {
+    background: none; /* Remove the green background */
+    border-radius: 50%; /* Keep it circular if you want */
+    width: 30px;
+    height: 30px;
+}
+
+.slick-prev:before, .slick-next:before {
+    color: #1A237E; /* Change arrow color if desired */
+    font-size: 30px;
+}

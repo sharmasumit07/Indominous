@@ -1,0 +1,205 @@
+.dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+    background-color:transparent;/* Dark Blue */
+    color: white;
+    padding: 0px 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 0.5rem;
+    min-width: 130px;
+    margin-left: 0.9rem;
+}
+
+.dropdown-button:hover {
+    color:#e6e6e6;
+}
+
+.arrow {
+    /* margin-left: 8px; */
+    font-size: 12px;
+}
+
+.dropdown-content {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 20px;
+    width: 300px;
+    z-index: 1;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.icon {
+    font-size: 24px;
+    color: #333399; /* Matching the dropdown color */
+    margin-right: 15px;
+}
+
+.dropdown-item h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #1a1a75;
+}
+
+.dropdown-item p {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+}
+
+
+
+
+/* contact   */
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    background-color: transparent; /* Makes the button background transparent */
+    color: white; /* Ensures the text color is visible */
+    padding: 12px;
+    font-size: 1.1rem;
+    border: 1px solid transparent; /* Transparent border to avoid visual border */
+    outline: none; /* Removes focus outline */
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adds smooth transition */
+}
+
+.dropdown-toggle:hover {
+    color: #e6e6e6;
+}
+
+
+.dropdown-content {
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-inner {
+    padding: 20px;
+}
+
+.company-info h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.company-info p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.contact-info h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+
+
+
+/* Hamburger animation */
+.hamburger.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333399;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 20px 0;
+        z-index: 1;
+        font-size: 1.25rem;
+        
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-link {
+        margin: 15px 0;
+        text-align: center;
+        
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger on small screens */
+    }
+
+    .dropdown-button{
+        color: black;
+        font-size: 1.25rem;
+        margin-top: 1rem;
+        
+    }
+
+    .dropdown-button:hover {
+        color: rgb(0, 0, 0);
+    }
+
+    .dropdown-toggle{
+        color: black;
+        font-size: 1.25rem;
+        margin-left: 1.3rem;
+    }
+
+    .dropdown-toggle:hover{
+        color: black;
+    }
+
+    .dropdown-wrapper{
+        margin-left: 2rem;
+    }
+}
+
+
+
+

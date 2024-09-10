@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+.cyber-second5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3.5rem;
+    /* background:url(../../public/contact-bg.png); */
+    background-color: white;
+
+}
+
+.schedule-btn-navbar:hover {
+    background-color: #1f2daf;
+    /* color: var(--text-main); */
+    border: 1px solid var(--text-main);
+    cursor: pointer;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .cyber-second5 {
+        flex-direction: column; /* Stacks the items vertically on smaller screens */
+        gap: 1.5rem; /* Reduces the gap between items */
+        padding: 15px; /* Reduces padding for smaller screens */
+    }
+
+    .schedule-btn-navbar {
+        font-size: 14px; /* Adjusts font size for smaller screens */
+        padding: 10px 15px; /* Adjusts padding for a more compact look */
+    }
+}
