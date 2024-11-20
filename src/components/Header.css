@@ -1,202 +1,356 @@
-.dropdown-wrapper {
-    position: relative;
-    display: inline-block;
+
+
+.header {
+    background: linear-gradient(360deg, #101d52, #293287 );
+    background-size: 400% 400%;
+    /* animation: gradientBG 8s ease infinite; */
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
 }
 
-.dropdown-button {
-    background-color:transparent;/* Dark Blue */
+.logo img {
+    width: 12rem;
+    height: 5rem;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    /* background: white; */
+    /* padding: 5px; */
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+.navbar {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.menu-container {
+    display: flex;
+    background: rgba(29, 28, 28, 0.15);
+    border-radius: 30px;
+    padding: 5px;
+    backdrop-filter: blur(5px);
+    gap: 4rem;
+}
+
+.menu-item {
     color: white;
-    padding: 0px 20px;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 25px;
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
-    gap: 0.5rem;
-    min-width: 130px;
-    margin-left: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.dropdown-button:hover {
-    color:#e6e6e6;
+.menu-item:not(:last-child) {
+    margin-right: 10px;
 }
 
-.arrow {
-    /* margin-left: 8px; */
-    font-size: 12px;
-}
-
-.dropdown-content {
+.menu-item::before {
+    content: '';
     position: absolute;
-    background-color: white;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    margin-top: 10px;
-    padding: 20px;
-    width: 300px;
-    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
 }
 
-.dropdown-item {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #e6e6e6;
-}
-
-.dropdown-item:last-child {
-    border-bottom: none;
+.menu-item:hover::before,
+.menu-item.active::before {
+    transform: translateX(0);
 }
 
 .icon {
-    font-size: 24px;
-    color: #333399; /* Matching the dropdown color */
-    margin-right: 15px;
-}
-
-.dropdown-item h4 {
-    margin: 0;
-    font-size: 16px;
-    color: #1a1a75;
-}
-
-.dropdown-item p {
-    margin: 0;
-    font-size: 12px;
-    color: #666;
-}
-
-
-
-
-/* contact   */
-.dropdown-container {
+    font-size: 20px;
+    margin-right: 10px;
     position: relative;
-    display: inline-block;
-}
-
-.dropdown-toggle {
-    background-color: transparent; /* Makes the button background transparent */
-    color: white; /* Ensures the text color is visible */
-    padding: 12px;
-    font-size: 1.1rem;
-    border: 1px solid transparent; /* Transparent border to avoid visual border */
-    outline: none; /* Removes focus outline */
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Adds smooth transition */
-}
-
-.dropdown-toggle:hover {
-    color: #e6e6e6;
-}
-
-
-.dropdown-content {
-    position: absolute;
-    right: 0;
-    background-color: #f9f9f9;
-    min-width: 300px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
-.dropdown-inner {
-    padding: 20px;
-}
-
-.company-info h2 {
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.company-info p {
-    color: #666;
-    margin-bottom: 20px;
-}
-
-.contact-info h3 {
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.contact-info p {
-    color: #666;
-    margin-bottom: 5px;
-}
-
-
-
-
-/* Hamburger animation */
-.hamburger.open .bar:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.open .bar:nth-child(2) {
+.label {
+    font-weight: bold;
     opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
 }
 
-.hamburger.open .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+.menu-item:hover .label,
+.menu-item.active .label {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* Responsive Styles */
+.schedule-btn {
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(240,240,240,1) 100%);
+    color: #0074D9;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 116, 217, 0.3), 0 8px 30px rgba(0, 116, 217, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Layered radial gradient for background glow */
+.schedule-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 116, 217, 0.5), transparent 70%);
+    transition: opacity 0.3s ease;
+    filter: blur(20px); /* Blur effect for glowing background */
+    z-index: -1; /* Behind the button */
+    opacity: 0; /* Initially invisible */
+}
+
+/* Hover effect to enhance glow */
+.schedule-btn:hover::before {
+    opacity: 1;
+    transform: scale(1.1); /* Slightly enlarges the glow on hover */
+}
+
+.schedule-btn:hover {
+    background-color: #0074D9;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 116, 217, 0.4), 0 12px 40px rgba(0, 116, 217, 0.3);
+}
+
+/* Optional active/pressed state */
+.schedule-btn:active {
+    transform: translateY(0); /* No translate on press */
+    box-shadow: 0 2px 8px rgba(0, 116, 217, 0.2);
+}
+
+
+
+
+/* Popup container */
+.popup {
+    position: absolute;
+    top: 60px; /* Adjust based on header height */
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(-45deg, #103CE7, #1197ae );
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    width: 350px;
+    text-align: center;
+}
+
+
+/* Popup content */
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+/* Popup items */
+.popup-item {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Last item without border */
+.popup-item:last-child {
+    border-bottom: none;
+}
+
+/* Popup icons */
+.popup-item .icon {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Popup details: labels and descriptions */
+.popup-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.popup-label {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.popup-description {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Hover effect for popup items */
+.popup-item:hover {
+    /* background: rgba(255, 255, 255, 0.1); */
+    transform: scale(0.8);
+}
+
+/* Animation for popup fade-in */
+.popup {
+    animation: fadeIn 0.3s ease;
+    margin-top: 4rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* --- Mobile Responsive Styles --- */
 @media screen and (max-width: 768px) {
-    .nav-links {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        background-color: #333399;
+
+    /* Header Styles */
+    .header {
+        padding: 15px 3%;
+        flex-wrap: wrap;
+        position: relative;
+    }
+
+    /* Logo Styling */
+    .logo {
+        z-index: 1001;
+    }
+
+    /* Navbar Styles (Initially Hidden) */
+    .navbar {
+        display: none;
+        /* Hide navbar by default */
         position: absolute;
-        top: 60px;
+        /* Position the navbar above other content */
+        top: 100%;
+        /* Initially position it below the header */
         left: 0;
-        padding: 20px 0;
-        z-index: 1;
-        font-size: 1.25rem;
-        
+        width: 100%;
+        background: linear-gradient(360deg, #101d52, #293287);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        /* Ensure it appears above other content */
     }
 
-    .nav-links.active {
+    /* Show the navbar when the menu is toggled */
+    .navbar.mobile-menu-open {
         display: flex;
+        top: 0;
+        /* Position it directly below the header */
+        animation: slideDown 0.3s ease;
+        /* Slide animation for opening */
     }
 
-    .nav-link {
-        margin: 15px 0;
-        text-align: center;
-        
+    /* Menu Container Styles */
+    .menu-container {
+        flex-direction: column;
+        background: transparent;
+        gap: 1rem;
+        width: 100%;
     }
 
-    .hamburger {
-        display: flex; /* Show hamburger on small screens */
+    /* Menu Item Styles */
+    .menu-item {
+        width: 100%;
+        /* Make items full width */
+        justify-content: flex-start;
+        padding: 15px;
+        margin-right: 0;
+        text-align: left;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.3s ease;
     }
 
-    .dropdown-button{
-        color: black;
-        font-size: 1.25rem;
-        margin-top: 1rem;
-        
+    /* Menu Item Hover Effect */
+    .menu-item:hover {
+        background: rgba(255, 255, 255, 0.1);
     }
 
-    .dropdown-button:hover {
-        color: rgb(0, 0, 0);
+    /* Mobile Menu Toggle Button */
+    .mobile-menu-toggle {
+        display: flex;
+        /* Show the hamburger button on mobile */
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1002;
+        /* Ensure the hamburger is on top of the header */
     }
 
-    .dropdown-toggle{
-        color: black;
-        font-size: 1.25rem;
-        margin-left: 1.3rem;
+    /* Hide schedule button on mobile */
+    .schedule-btn {
+        display: none;
+        /* Optionally, hide this button on mobile or include it in the menu */
     }
 
-    .dropdown-toggle:hover{
-        color: black;
+    /* Popup Styles for Mobile */
+    .popup {
+        position: static;
+        width: 100%;
+        transform: none;
+        margin-top: 0;
     }
 
-    .dropdown-wrapper{
-        margin-left: 2rem;
+    /* Keyframes for Slide Down Animation */
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            top: 100%;
+            /* Start below the header */
+        }
+
+        to {
+            opacity: 1;
+            top: 0;
+            /* Slide up to below the header */
+        }
+    }
+}
+
+/* --- Mobile Menu Toggle Visibility --- */
+@media screen and (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+        /* Display hamburger on mobile */
     }
 }
 

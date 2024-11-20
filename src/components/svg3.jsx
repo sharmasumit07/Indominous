@@ -3,7 +3,7 @@ const SVGComponent4 = (props) => (
   <svg
     data-name="Layer 1"
     width={909}
-    height={453}
+    height={950}
     viewBox="0 0 909 453"
     {...props}
   >

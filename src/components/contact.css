@@ -3,7 +3,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
+    width: auto;
     background-color: #f4f4f9;
     padding: 0 50px;
 }
@@ -49,6 +50,8 @@
     opacity: 0;
     animation: imageFadeIn 1s 0.5s forwards;
     margin-right: 2rem;
+    padding-top: 2.5rem;
+    padding-left: 1rem;
 }
 
 /* Image Hover Effects */
@@ -62,7 +65,7 @@
 /* Form Wrapper */
 .contact-form-wrapper {
     flex: 1;
-    /* padding: 0.1rem; */
+    padding: 0.8rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -98,14 +101,14 @@
 .input-group {
     position: relative;
     margin-bottom: 20px;
-    padding-top: 20px;
+    padding-top: 30px;
     animation: fadeInUp 0.5s 1s forwards;
 }
 
 .input-group input,
 .input-group textarea {
     width: 100%;
-    padding: 15px;
+    padding: 12px;
     border-radius: 10px;
     border: 2px solid #ddd;
     background: #f9f9f9;
@@ -157,7 +160,7 @@
 }
 
 .submit-btn:hover {
-    background-color: #a777e3;
+    background-color: #2727c8;
     transform: scale(1.05);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }

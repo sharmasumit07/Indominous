@@ -1,0 +1,752 @@
+/* General styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+* {
+  margin: 0;
+}
+
+
+.home-container {
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* Header spacing */
+.intro {
+  margin-top: 2rem; /* Adjust based on your header height */
+  display: flex;
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  padding: 1rem;
+  animation: fadeIn 1s ease-out;
+  /* margin-top: 5rem; */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gradient-hero {
+  /* background: linear-gradient(45deg, #001f3f, #0074D9); */
+  color: #001f3f;
+  /* padding: 10px 20px; */
+  font-size: 2rem;
+  border-radius: 25px;
+  display: inline-block;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.gradient-hero:hover {
+  transform: scale(1.05);
+  /* box-shadow: 0 5px 15px rgba(0, 116, 217, 0.4); */
+}
+
+
+
+.hero-head h1 {
+  margin-top: 0.1rem;
+  font-size: 1em;
+  color: #333;
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+}
+
+
+.predict {
+  color: #045297;
+  position: relative;
+  display: inline-block;
+}
+
+.predict::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #0074D9;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+
+.hero-txt {
+  max-width: 600px;
+  margin: 0 auto;
+  color: #666;
+  line-height: 1.6;
+}
+
+.threecard-box {
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Buttons */
+.two-btns {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.learn-more-btn, .schedule-btn {
+  padding: 12px 24px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.learn-more-btn {
+  background-color: #0074D9;
+  color: white;
+}
+
+.schedule-btn {
+  background: linear-gradient(-45deg, #14225b, #1852f1 );
+  color: white;
+}
+
+.learn-more-btn:hover, .schedule-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.learn-more-btn:active, .schedule-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Sections */
+section {
+  margin-bottom: 80px;
+  /* opacity: 0; */
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Prevent section */
+.prevent-section {
+  background-color: #f8f9fa; /* Light background for contrast */
+  padding: 60px 20px; /* Adequate padding */
+}
+
+.prevent {
+  display: flex; /* Flexbox layout for responsiveness */
+  align-items: center; /* Vertically center content */
+  justify-content: space-between; /* Space between elements */
+  background-color: white; /* White background for the card */
+  padding: 40px; /* Increased padding for the card */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.prevent:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+.prevent-first {
+  flex: 1; /* Allow this section to grow */
+  min-width: 300px; /* Minimum width for responsiveness */
+}
+
+.prevent-txt h2 {
+  color: #333; /* Dark text for visibility */
+  margin-bottom: 20px; /* Space below the heading */
+  font-size: 2.5rem; /* Large heading */
+}
+
+.predict {
+  color: #007BFF; /* Highlighted color for emphasis */
+}
+
+.prevent-txt p {
+  font-size: 1.2rem; /* Font size for paragraphs */
+  line-height: 1.6; /* Increased line height for readability */
+  margin-bottom: 1rem; /* Space between paragraphs */
+}
+
+.prevent-btns {
+  display: flex; /* Flexbox for button alignment */
+  gap: 15px; /* Space between buttons */
+  margin-top: 30px; /* Space above buttons */
+}
+
+.learn-more-btn,
+.schedule-btn {
+  padding: 12px 20px; /* Consistent padding */
+  border-radius: 5px; /* Rounded corners */
+  border: none; /* Remove default border */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Transition for hover effect */
+  font-size: 1rem; /* Button font size */
+  font-weight: bold; /* Bold font for emphasis */
+}
+
+.learn-more-btn {
+  background-color: #007BFF; /* Primary color */
+  color: white; /* Text color */
+}
+
+.schedule-btn {
+  background-color: #28A745; /* Secondary color */
+  color: white; /* Text color */
+}
+
+.learn-more-btn:hover,
+.schedule-btn:hover {
+  opacity: 0.9; /* Slight opacity change on hover */
+}
+
+.prevent-svg {
+  flex: 1; /* Allow this section to grow */
+  min-width: 300px; /* Minimum width for responsiveness */
+  display: flex; /* Flexbox for SVG alignment */
+  justify-content: center; /* Center SVG */
+  align-items: center; /* Vertically center */
+}
+
+/* Products section */
+.threecard-box {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 20px;
+  /* background: linear-gradient(to right, #f7f8fa, #e1e6eb);  */
+  border-radius: 10px;
+  /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); */
+}
+
+.gradient-hero {
+  /* background: linear-gradient(90deg, #0077cc, #00bcd4); */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.hero-head h5 {
+  font-size: 1.8rem;
+  color: #333;
+  margin: 0.5rem 0;
+}
+
+.hero-txt p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+
+.cards-section-imp {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 4rem;
+  height: 16rem;
+  width: calc(25% - 30px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 116, 217, 0.1), transparent);
+  transition: top 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover::before {
+  top: 0;
+}
+
+.card-type {
+  color: #0074D9;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.card-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0074D9;
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card-btn:hover {
+  background-color: #005fb3;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 116, 217, 0.4);
+}
+
+/* Integrations section */
+.main-integrations {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  max-width: 1200px; /* Set a max width for larger screens */
+  margin: auto; /* Center the container */
+}
+
+.main-integrations:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.integration-head h5 {
+  font-size: 1.5rem;
+  color: #777; /* Slightly lighter color for the subtitle */
+}
+
+.integration-head h2 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-weight: bold; /* Make the heading bold */
+}
+
+.main-integrations p {
+  font-size: 1.2rem; /* Slightly smaller font for better readability */
+  margin: 2rem 0; /* Reduce vertical spacing */
+  line-height: 1.6; /* Increase line-height for readability */
+}
+
+.integration-btns {
+  display: flex;
+  gap: 1rem; /* Add space between buttons */
+  margin-top: 20px; /* Space above buttons */
+}
+
+.learn-more-btn, .schedule-btn {
+  padding: 12px 20px; /* Consistent padding */
+  border-radius: 35px; /* Rounded corners */
+  border: none; /* Remove default border */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Transition for hover effect */
+  font-size: 1rem; /* Adjust font size */
+  font-weight: bold; /* Bold font for emphasis */
+}
+
+.learn-more-btn {
+  background-color: #007BFF; /* Primary color */
+  color: white; /* Text color */
+}
+
+.schedule-btn {
+  background-color: #28A745; /* Secondary color */
+  color: #fff; /* Text color */
+}
+
+.learn-more-btn:hover, .schedule-btn:hover {
+  opacity: 0.9; /* Reduce opacity on hover for feedback */
+}
+
+.integration-ticks {
+  display: flex;
+  justify-content: space-between; /* Space out items evenly */
+  margin-top: 30px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.integration-ticks div {
+  display: flex;
+  align-items: center;
+  margin: 0 1rem; /* Consistent horizontal spacing */
+  transition: all 0.3s ease;
+  flex: 1; /* Allow items to grow equally */
+}
+
+.integration-ticks div:hover {
+  transform: translateY(-5px);
+}
+
+.integration-ticks img {
+  height: 1.8rem;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.integration-ticks div:hover img {
+  transform: scale(1.1);
+}
+
+.integration-ticks p {
+  margin: 0; /* Remove default margin */
+  font-size: 1rem; /* Adjust font size */
+  color: #555; /* Set a muted color */
+}
+
+
+/* Partners section */
+.main-partners {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.main-partners:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.partners-img img {
+  max-width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.partners-img:hover img {
+  transform: scale(1.05);
+}
+
+.partners-right-block {
+  padding-left: 40px;
+}
+
+.partners-head h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.partners-right-block p{
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.two-factor, .prevent-svg {
+  animation: float 4s ease-in-out infinite;
+}
+
+
+
+
+
+
+
+
+
+
+/* Base styles for the section */
+.intro .hero {
+  position: relative;
+  overflow: hidden;
+  padding: 50px;
+  color: #fff;
+  background-color: #f0f4f8;
+}
+
+
+
+/* Hero text styles */
+.intro .hero-head h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.intro .hero-txt p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Button hover effects */
+.intro .learn-more-btn, .intro .schedule-btn {
+  background-color:#0074D9 ;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 35px;
+  transition: transform 0.3s ease;
+}
+
+.intro .learn-more-btn:hover, .intro .schedule-btn:hover {
+  transform: scale(1.05);
+}
+
+
+:root {
+  --backdrop: hsl(0 0% 60% / 0.12);
+  --radius: 14;
+  --border: 3;
+  --backup-border: var(--backdrop);
+  --size: 200;
+}
+
+.card-imp {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.5rem;
+  height: 230px;
+  border-radius: calc(var(--radius) * 1px);
+  box-shadow: 0 1rem 2rem -1rem rgba(0, 0, 0, 0.2);
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-imp[data-glow] {
+  --border-size: calc(var(--border, 2) * 1px);
+  --spotlight-size: calc(var(--size, 150) * 1px);
+  --hue: calc(var(--base, 80) + (var(--xp, 0) * var(--spread, 500)));
+  background-image: radial-gradient(var(--spotlight-size) var(--spotlight-size) at calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px),
+    hsl(var(--hue, 208) calc(var(--saturation, 100) * 1%) calc(var(--lightness, 70) * 1%) / var(--bg-spot-opacity, 0.1)), transparent);
+  background-color: var( transparent);
+  background-size: calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)));
+  background-position: 50% 50%;
+  background-attachment: fixed;
+  border: var(--border-size) solid var(--backup-border);
+  position: relative;
+  touch-action: none;
+  transform: translateY(0);
+  box-shadow: 0 1rem 2rem -1rem rgba(0, 0, 0, 0.2);
+}
+
+.card-imp[data-glow]:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 1.5rem 3rem -1rem rgba(0, 0, 0, 0.3);
+}
+
+.card-imp[data-glow]::before,
+.card-imp[data-glow]::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: calc(var(--border-size) * -1);
+  border: var(--border-size) solid transparent;
+  border-radius: calc(var(--radius) * 1px);
+  background-attachment: fixed;
+  background-size: calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)));
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  mask:
+      linear-gradient(transparent, transparent),
+      linear-gradient(white, white);
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+}
+
+.card-imp[data-glow]::before {
+  background-image: radial-gradient(calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75) at calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px),
+    hsl(var(--hue, 208) calc(var(--saturation, 100) * 1%) 50% / var(--border-spot-opacity, 1)), transparent 100%);
+  filter: brightness(2);
+}
+
+.card-imp[data-glow]::after {
+  background-image: radial-gradient(calc(var(--spotlight-size) * 0.5) calc(var(--spotlight-size) * 0.5) at calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px),
+    hsl(208 100% 50% / var(--border-light-opacity, 1)), transparent 100%);
+}
+
+.card-imp[data-glow] .card-btn[data-glow] span {
+  font-weight: bold;
+  background-image: radial-gradient(var(--spotlight-size) var(--spotlight-size) at calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px),
+    hsl(var(--hue, 208) calc(var(--saturation, 100) * 1%) calc(var(--lightness, 70) * 1%) / var(--bg-spot-opacity, 1)), transparent);
+  background-color: var(--backdrop, transparent);
+  background-position: 50% 50%;
+  background-attachment: fixed;
+  background-clip: text; /* Keep this to apply gradient */
+  filter: brightness(1.5);
+  color: transparent; /* Keep this for gradient effect */
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5); /* Add a shadow for visibility */
+}
+
+/* Optional: Add fallback color */
+.card-imp[data-glow] .card-btn[data-glow] span {
+  color: hsl(208, 100%, 50%); /* Set a specific color for better visibility */
+}
+
+
+@media screen and (max-width: 768px) {
+
+  /* Intro and Hero Section */
+  .intro {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-head h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-txt p {
+    font-size: 1rem;
+  }
+
+  .two-btns {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .learn-more-btn,
+  .schedule-btn {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 0;
+  }
+
+  /* Prevent Section */
+  .prevent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .prevent-first,
+  .prevent-svg {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .prevent-txt h2 {
+    font-size: 2rem;
+  }
+
+  .prevent-btns {
+    justify-content: center;
+  }
+
+  /* Cards Section */
+  .cards-section-imp {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .card {
+    width: 100%;
+    margin: 1rem 0;
+    height: auto;
+  }
+
+  /* Integrations Section */
+  .main-integrations {
+    padding: 20px;
+  }
+
+  .integration-head h2 {
+    font-size: 2rem;
+  }
+
+  .integration-ticks {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .integration-ticks div {
+    margin: 10px 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .two-factor svg{
+    height: 8rem;
+    width: auto;
+  }
+
+  /* Partners Section */
+  .main-partners {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .partners-img {
+    margin-bottom: 20px;
+  }
+
+  .partners-right-block {
+    padding-left: 0;
+  }
+
+  .partners-head h2 {
+    font-size: 1.8rem;
+  }
+
+  /* Responsive Typography */
+  body {
+    font-size: 14px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+/* Additional mobile-specific adjustments */
+@media screen and (max-width: 480px) {
+  .hero-head h1 {
+    font-size: 1.5rem;
+  }
+
+  .card-imp {
+    height: auto;
+  }
+
+  .integration-head h2 {
+    font-size: 1.7rem;
+  }
+}

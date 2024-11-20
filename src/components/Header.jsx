@@ -1,102 +1,127 @@
 import React, { useState } from 'react';
-import { FaFilm, FaHardHat, FaGraduationCap, FaHospital } from 'react-icons/fa';
-import './Header.css';
+import { FaFilm, FaHardHat, FaHome, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
+import { MdDevices } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import { FadeIn } from './FadeIn';
+import "./Header.css";
 
 const Header = () => {
-    const [isProductsOpen, setIsProductsOpen] = useState(false);
-    const [isContactOpen, setIsContactOpen] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false); // Added state for hamburger menu
+    const [activeItem, setActiveItem] = useState(null);
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [isHoveringPopup, setIsHoveringPopup] = useState(false);
+    const [popupClosing, setPopupClosing] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    const toggleProductsDropdown = () => {
-        setIsProductsOpen(!isProductsOpen);
-        if (isContactOpen) setIsContactOpen(false);
+    const menuItems = [
+        { icon: FaHome, label: 'Home', link: '/' },
+        { icon: FaEnvelope, label: 'Contact', link: '/contact' },
+    ];
+
+    const productItems = [
+        { icon: FaFilm, label: 'Flick Analytics', description: 'Movie Making Solutions On your Screen', link: '/product1' },
+        { icon: FaHardHat, label: 'Site Analytics', description: 'Easy Data Management for Civil Engineers', link: '/product2' },
+    ];
+
+    const handleMouseLeave = () => {
+        setTimeout(() => {
+            if (!isHoveringPopup) {
+                setPopupClosing(true);
+                setTimeout(() => {
+                    setIsPopupOpen(false);
+                    setPopupClosing(false);
+                }, 300);
+            }
+        }, 1000);
     };
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen); // Toggle hamburger menu state
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
+    const closeMobileMenu = () => {
+        setIsMobileMenuOpen(false);
     };
 
     return (
-        <>
-            <FadeIn>
-                <header className="header">
-                    <nav className="navbar">
-                        <div className="logo">
-                            <Link to="/" style={{ textDecoration: 'none' }}>
-                                <img src="/logo.png" alt="Logo" />
-                            </Link>
-                        </div>
+        <header className="header">
+            <div className="logo">
+                <Link to="/">
+                    <img src="/logo2.png" alt="Logo" />
+                </Link>
+            </div>
 
-                        <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-                            <li><Link to="/" style={{ textDecoration: 'none' }} ><a className="home-anchor" href="#">Home</a></Link></li>
+            {/* Hamburger Menu for Mobile */}
+            <div className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+                {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+            </div>
 
-                            <li className="nav-link">
-                                <div className="dropdown-wrapper">
-                                    <button className="dropdown-button" onClick={toggleProductsDropdown}>
-                                        Products
-                                        <span className="arrow">{isProductsOpen ? '▲' : '▼'}</span>
-                                    </button>
-                                    {isProductsOpen && (
-                                        <div className="dropdown-content">
-                                            <div className="dropdown-item">
-                                                <FaFilm className="icon" />
-                                                <div>
-                                                    <Link to="/product1" style={{ textDecoration: 'none' }} ><h4>Flick Analytics</h4></Link>
-                                                    <p>Movie Making Solutions On your Screen</p>
-                                                </div>
-                                            </div>
-                                            <div className="dropdown-item">
-                                                <FaHardHat className="icon" />
-                                                <div>
-                                                    <Link to="/product2" style={{ textDecoration: 'none' }}><h4>Site Analytics</h4></Link>
-                                                    <p>Easy Data Management for Civil Engineers</p>
-                                                </div>
-                                            </div>
-                                            <div className="dropdown-item">
-                                                <FaGraduationCap className="icon" />
-                                                <div>
-                                                    <h4>Edu Analytics</h4>
-                                                    <p>Better Data Management for Universities</p>
-                                                </div>
-                                            </div>
-                                            <div className="dropdown-item">
-                                                <FaHospital className="icon" />
-                                                <div>
-                                                    <h4>Medical Analytics</h4>
-                                                    <p>Safe and Secure Hospitals Data Management</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                            </li>
-
-                            <li className="nav-link">
-                                <div className="dropdown-container">
-                                    <Link to="/Contact">
-                                        <h4>
-                                            <button className="dropdown-toggle">Contact Us</button>
-                                        </h4>
-                                    </Link>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <Link to="/shedule">
-                            <button className="schedule-btn schedule-btn-navbar">Schedule a Demo</button>
+            <nav className={`navbar ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
+                <div className="menu-container">
+                    {menuItems.slice(0, 1).map((item, index) => (
+                        <Link
+                            key={index}
+                            to={item.link}
+                            className={`menu-item ${activeItem === index ? 'active' : ''}`}
+                            onMouseEnter={() => setActiveItem(index)}
+                            onMouseLeave={() => setActiveItem(null)}
+                            onClick={closeMobileMenu}
+                        >
+                            <item.icon className="icon" />
+                            <span className="label">{item.label}</span>
                         </Link>
+                    ))}
+                    {/* Products menu item */}
+                    <div
+                        className="menu-item"
+                        onMouseEnter={() => {
+                            setActiveItem(menuItems.length);
+                            setIsPopupOpen(true);
+                        }}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <MdDevices className="icon" />
+                        <span className="label">Products</span>
+                    </div>
+                    {menuItems.slice(1).map((item, index) => (
+                        <Link
+                            key={index}
+                            to={item.link}
+                            className={`menu-item ${activeItem === index + 1 ? 'active' : ''}`}
+                            onMouseEnter={() => setActiveItem(index + 1)}
+                            onMouseLeave={() => setActiveItem(null)}
+                            onClick={closeMobileMenu}
+                        >
+                            <item.icon className="icon" />
+                            <span className="label">{item.label}</span>
+                        </Link>
+                    ))}
+                </div>
+            </nav>
+            <Link to="/schedule" className="schedule-btn" onClick={closeMobileMenu}>Schedule a Demo</Link>
 
-                        <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
-                            <span className="bar"></span>
-                            <span className="bar"></span>
-                            <span className="bar"></span>
-                        </div>
-                    </nav>
-                </header>
-            </FadeIn>
-        </>
+            {/* Popup for Products */}
+            {isPopupOpen && (
+                <div
+                    className={`popup ${popupClosing ? 'fade-up' : ''}`}
+                    onMouseEnter={() => setIsHoveringPopup(true)}
+                    onMouseLeave={() => {
+                        setIsHoveringPopup(false);
+                        handleMouseLeave();
+                    }}
+                >
+                    <div className="popup-content">
+                        {productItems.map((item, index) => (
+                            <Link key={index} to={item.link} className="popup-item">
+                                <item.icon className="icon" />
+                                <div className="popup-details">
+                                    <span className="popup-label">{item.label}</span>
+                                    <span className="popup-description">{item.description}</span>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            )}
+        </header>
     );
 };
 

@@ -3,7 +3,7 @@ const SVGComponent6 = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={524.67004}
-    height={531.39694}
+    height={510.39694}
     viewBox="0 0 524.67004 531.39694"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     {...props}

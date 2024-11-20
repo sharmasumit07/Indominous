@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import Footer from './Footer';
 import Header from './Header';
 // import ReviewSlider from "./review1";
@@ -8,6 +8,54 @@ import Sheduledemo from './Sheduledemo';
 import { Link } from 'react-router-dom';
 
 const Product2 = () => {
+
+  useEffect(() => {
+    // Dynamically load CSS file
+    const cssFile = './product1.css';
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = cssFile;
+    document.head.appendChild(link);
+
+    // Text animation logic
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let interval = null;
+
+    function changeTextLetter(event) {
+      let iteration = 0;
+      const initText = event.target.innerText;
+      clearInterval(interval);
+      interval = setInterval(() => {
+        event.target.innerText = initText
+          .split("")
+          .map((letter, index) => {
+            if (index < iteration) {
+              return event.target.dataset.textValue[index];
+            }
+            return letters[Math.floor(Math.random() * 26)];
+          })
+          .join("");
+        if (iteration >= event.target.dataset.textValue.length) {
+          clearInterval(interval);
+        }
+        iteration += 1 / 5;
+      }, 10);
+    }
+
+    // Apply animation on elements with class "animated-text"
+    const animTexts = document.querySelectorAll(".animated-text");
+    animTexts.forEach((element) => {
+      changeTextLetter({ target: element });
+    });
+
+    return () => {
+      // Clean up dynamically added CSS and intervals
+      document.head.removeChild(link);
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, []);
   return (
     <>
       <Header />
@@ -17,14 +65,22 @@ const Product2 = () => {
           <div className="product2-intro">
             <div className="product2-intro-left">
               <h1>
-                Unveiling Digital Landscapes: Empowering Insights with <span className="predict">Site Analytics</span>
+                Unveiling Digital Landscapes: Empowering Insights with 
+                <div className="wrapper">
+                  <h1
+                    className="predict-flick animated-text"
+                    data-text-value="Em Metrics"  // Ensure correct dataset value
+                  >
+                    Em Metrics
+                  </h1>
+                </div>
               </h1>
               <p>
                 Navigating the digital realm, our Site Analytics solution illuminates pathways to success, providing invaluable insights for optimized performance and enhanced user experiences.
               </p>
               <div className="product2-btns">
-              <Link to="/shedule" ><a href="../components/demo.html">
-                  <button className="schedule-btn review-btn-one">Sign Up</button>
+              <Link to="/schedule" ><a href="../components/demo.html">
+                  <button className="schedule-btn review-btn-one">Sechdule a Demo</button>
                 </a></Link>
                 
 
@@ -32,9 +88,6 @@ const Product2 = () => {
             </div>
             <div className="product2-images">
               <img className="product2-main-img" src="./site-intro.png" alt="flick-budgeting" />
-
-
-
             </div>
           </div>
         </section>
@@ -59,7 +112,7 @@ const Product2 = () => {
                 focus on their core responsibilities without the hassle of manual intervention.
               </p>
               <div className="process-btns">
-                <Link to="/shedule" >
+                <Link to="/schedule" >
                   <a href="../components/demo.html">
                     <button className="schedule-btn review-btn-one">Request a Demo</button>
                   </a>
@@ -73,31 +126,34 @@ const Product2 = () => {
 
 
       <FadeIn>
-        <section>
+        <section className="product1-cards">
           <div className="cyber-cards">
             <div className="cards-section">
-              <div className="card orange-card">
-                <h1>
-                  <span className="card-type">Site <br /> Analytics</span>
-                </h1>
-                <p>
-                  Pioneering the digital landscape, our Site Analytics solution leverages cutting-edge machine learning and artificial intelligence technologies to empower businesses across diverse sectors.
-                </p>
-                <button className="card-btn">
-                  <img src="./next.png" alt="next" />&nbsp;Visit Us
-                </button>
-              </div>
-              <div className="card">
+              <div className="card orange">
                 <h1>
                   <span className="card-type">Flick Analytics</span>
                 </h1>
                 <p>
-                A revolutionary solution that uses machine learning and artificial intelligence to serve media and entertainment industry.
+                  A revolutionary solution that uses machine learning and artificial intelligence to serve media and entertainment industry.
                 </p>
-                <Link to="/product1" style={{ textDecoration: 'none' }} ><button className="card-btn">
-                  <img src="./next.png" alt="next" />&nbsp;View All Partners
-                </button></Link>
-                
+                <Link to="/product1" style={{ textDecoration: 'none' }}>
+                  <button className="card-btn1">
+                    <img src="./next.png" alt="next" />&nbsp;Visit Us
+                  </button>
+                </Link>
+              </div>
+              <div className="card">
+                <h1>
+                  <span className="card-type">Em Metrics</span>
+                </h1>
+                <p>
+                  Pioneering the digital landscape, our Site Analytics solution leverages cutting-edge machine learning and artificial intelligence technologies to empower businesses across diverse sectors.
+                </p>
+                <Link to="/product2" style={{ textDecoration: 'none' }}>
+                  <button className="card-btn1">
+                    <img src="./next.png" alt="next" />&nbsp;Visit Us
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -108,12 +164,12 @@ const Product2 = () => {
 
 
       <FadeIn>
-        <section>
-          <div className="cyber-second">
-            <div className="cyber-second-right">
+        <section className="demo-request-section">
+        <div className="cyber-second5">
+        <div className="cyber-second-right">
               <div>
                 <h3>
-                  Request For <br /> <span>DEMO</span>
+                  Request For <br /> <span className="highlight">DEMO</span>
                 </h3>
               </div>
               <p>We are Open for Demo</p>
@@ -171,7 +227,7 @@ const Product2 = () => {
                 {/* reCAPTCHA checkbox */}
                 <div className="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
                 <br />
-                <button type="submit">Submit</button>
+                <button type="submit" className="submit-btn">Submit</button>
               </form>
             </div>
           </div>

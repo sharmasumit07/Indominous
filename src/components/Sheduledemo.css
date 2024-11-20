@@ -4,29 +4,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3.5rem;
+    gap: 2.5rem;
     /* background:url(../../public/contact-bg.png); */
     background-color: white;
-
+    padding: 2.5rem;
 }
 
 .schedule-btn-navbar:hover {
-    background-color: #1f2daf;
+    background-color: #0074D9;
     /* color: var(--text-main); */
     border: 1px solid var(--text-main);
     cursor: pointer;
     color: white;
 }
 
-@media screen and (max-width: 768px) {
-    .cyber-second5 {
-        flex-direction: column; /* Stacks the items vertically on smaller screens */
-        gap: 1.5rem; /* Reduces the gap between items */
-        padding: 15px; /* Reduces padding for smaller screens */
-    }
 
-    .schedule-btn-navbar {
-        font-size: 14px; /* Adjusts font size for smaller screens */
-        padding: 10px 15px; /* Adjusts padding for a more compact look */
-    }
+.ticks img {
+    height: 2rem;
+    width: auto;
 }

@@ -3,8 +3,8 @@ const SVGComponent5 = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     data-name="Layer 1"
-    width={997}
-    height={420.61854}
+    width={700}
+    height={350.61854}
     viewBox="0 0 997 420.61854"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     {...props}

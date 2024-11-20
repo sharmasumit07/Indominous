@@ -1,233 +1,268 @@
-import React from 'react';
-import './styles.css';
+import React, { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import SVGComponent5 from './Svghome';
 import SVGComponent6 from './Svghome2';
-// import '../swiper-bundle.min.css'
-// import SwiperCore, { Navigation, Pagination } from 'swiper';
-// import { Swiper, SwiperSlide } from 'swiper/react';
 import Footer from './Footer';
 import Header from './Header';
-// import ReviewSlider from "./review1";
-import { FadeIn } from './FadeIn';
-import Sheduledemo from './Sheduledemo';
-import { Link } from 'react-router-dom';
+import './home.css';
 
 
+const ProductCard = ({ title, description, link }) => {
+    const cardRef = useRef(null);
 
+    useEffect(() => {
+        const card = cardRef.current;
+
+        const syncPointer = ({ x: pointerX, y: pointerY }) => {
+            const x = pointerX.toFixed(2);
+            const y = pointerY.toFixed(2);
+            const xp = (pointerX / window.innerWidth).toFixed(2);
+            const yp = (pointerY / window.innerHeight).toFixed(2);
+            card.style.setProperty('--x', x);
+            card.style.setProperty('--xp', xp);
+            card.style.setProperty('--y', y);
+            card.style.setProperty('--yp', yp);
+        };
+
+        card.addEventListener('pointermove', syncPointer);
+
+        return () => {
+            card.removeEventListener('pointermove', syncPointer);
+        };
+    }, []);
+
+    return (
+        <div className="card-imp" data-glow ref={cardRef}>
+            <h1><span className="card-type">{title}</span></h1>
+            <p>{description}</p>
+            <Link to={link} style={{ textDecoration: 'none' }}>
+                <button className="card-btn" data-glow><span>Learn more about this</span></button>
+            </Link>
+        </div>
+    );
+};
 
 const Home = () => {
-    return (
-        <>
-            <Header />
+    const [activeSection, setActiveSection] = useState('');
 
-            <FadeIn>
-            <section className="intro">
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    setActiveSection(entry.target.id);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        return () => {
+            document.querySelectorAll('section').forEach(section => {
+                observer.unobserve(section);
+            });
+        };
+    }, []);
+
+    const productCards = [
+        {
+            title: "Flick Analytics",
+            description: (
+                <>
+                    Bringing cinematic magic to your fingertips with our <br /> immersive movie streaming platform.
+                </>
+            ),
+            link: "/product1"
+        },
+        {
+            title: "Em Metrics",
+            description: (
+                <>
+                    Building the future with innovative & advanced 
+                     digital <br /> tools  for the civil engineering industry.
+                </>
+            ),
+            link: "/product2"
+        },
+    ];
+
+    // {
+    //     title: "Medic Analytics",
+    //     description: "Revolutionizing healthcare with our intuitive doctor-patient interaction platform.",
+    //     link: "/product3"
+    // },
+    // {
+    //     title: "Edu Analytics",
+    //     description: "Transforming education through engaging and interactive e-learning solutions.",
+    //     link: "/product4"
+    // }
+
+
+    return (
+        <div className="home-container">
+            <Header activeSection={activeSection} />
+
+            <section id="intro" className="intro">
                 <div className="hero">
                     <div className="gradient-hero">
                         <p>Advance. Innovate.&nbsp;<strong>Elevate</strong></p>
                     </div>
                     <div className="hero-head">
-                        <h1>Harnessing Technology for <br /><span className="predict">Healthcare, Education,</span> and <span className="predict">Beyond.</span> </h1>
+                        <h1>Harnessing Technology for <br /><span className="predict">Healthcare, Education,</span> and <span className="predict">Beyond.</span></h1>
                     </div>
                     <div className="hero-txt">
-                        <p>Empowering Professionals, Transforming Industries: Where Innovation Meets Expertise in Healthcare,
-                            Education, and Beyond.</p>
+                        <p>Empowering Professionals, Transforming Industries: Where Innovation Meets Expertise in Healthcare, Education, and Beyond.</p>
                     </div>
                     <div className="two-btns">
-                    <Link to="/contact" >
-                    <button className="learn-more-btn">Contact Us</button>
+                        <Link to="/contact">
+                            <button className="learn-more-btn">Contact Us</button>
                         </Link>
-                        
-                        <Link to="/shedule" >
-                        <a href="../components/demo.html"><button className="schedule-btn">Schedule a Demo</button></a>
+                        <Link to="/schedule">
+                            <button className="schedule-btn">Schedule a Demo</button>
                         </Link>
-                        
                     </div>
-                    <div className="two-factor">
-                        <SVGComponent5 />
-                        <div className="two-factor-txt">
-                            <h2>Innovation and Web-based Solutions</h2>
-                        </div>
+                </div>
+                <div className="blob-container">
+                    <div className="blob"></div>
+                    <div className="blob blob2"></div>
+                </div>
+                <div className="two-factor">
+                    <SVGComponent5 />
+                    <div className="two-factor-txt">
+                        <h2>Innovation and Web-based Solutions</h2>
                     </div>
                 </div>
             </section>
-            </FadeIn>
 
-            <FadeIn>
-            <section>
+
+            <section id="solutions" className="prevent-section">
                 <div className="prevent">
                     <div className="prevent-first">
                         <div className="prevent-txt">
-                            <h2>How do we provide<span className="predict">Web Based Solutions?</span></h2>
-                            <br />
-                            <p>At our company, we provide web-based solutions tailored specifically to the needs of <strong>doctors, educators, and health professionals.</strong>
-                                With a keen understanding of the complexities within these industries, we leverage our expertise to develop intuitive and user-centric products.
-                                Our solutions are designed to seamlessly integrate with existing systems, ensuring a smooth transition and maximizing efficiency.
-                                We prioritize scalability and flexibility, allowing our products to adapt to the evolving needs of our customers.<br /><br />
-                                Ultimately, our goal is to deliver <strong>tailored web-based solutions</strong> that achieve objectives in the healthcare, education, and health sectors.
+                            <h2>
+                                How do we provide <span className="predict">Web-Based Solutions?</span>
+                            </h2>
+                            <p>
+                                We offer web-based solutions tailored for <strong>doctors, educators, and health professionals.</strong>
+                                Our expertise allows us to develop intuitive, user-centric products that integrate seamlessly with existing systems.
+                            </p>
+                            <p>
+                                Our goal is to deliver <strong>tailored solutions</strong> that enhance efficiency and adapt to evolving needs.
                             </p>
                         </div>
                         <div className="prevent-btns">
-                        <Link to="/contact" >
-                    <button className="learn-more-btn">Contact Us</button>
-                        </Link>
-                        
-                        <Link to="/shedule" >
-                        <a href="../components/demo.html"><button className="schedule-btn">Schedule a Demo</button></a>
-                        </Link>
+                            <Link to="/contact">
+                                <button className="learn-more-btn">Contact Us</button>
+                            </Link>
+                            <Link to="/schedule">
+                                <button className="schedule-btn">Schedule a Demo</button>
+                            </Link>
                         </div>
                     </div>
                     <div className="prevent-svg">
                         <SVGComponent6 />
-                        {/* Add your SVG or any image/content here */}
                     </div>
                 </div>
             </section>
-            </FadeIn>
 
-            <FadeIn>
-            <section>
+
+            <section id="products" className="products-section">
                 <div className="threecard-box">
                     <div className="gradient-hero">
-                        <p className="sol-grad"><strong>PRODUCTS</strong></p>
+                        <p className="sol-grad"><strong>EXPLORE OUR PRODUCTS</strong></p>
                     </div>
                     <div className="hero-head">
-                        <h5 className="h5-module">Powerful Modules,</h5>
-                        <h5 className="h5-solutions">Powerful Solutions</h5>
+                        <h5 className="h5-module">Innovative Modules,</h5>
+                        <h5 className="h5-solutions">Transformative Solutions</h5>
                     </div>
                     <div className="hero-txt">
-                        <p>Across verticals, some of the world's largest and most innovative firms find our solutions perfect for their needs with over 170 use cases.</p>
+                        <p>Our solutions empower organizations across various sectors—enabling them to overcome challenges with over 170 innovative use cases tailored to specific needs.</p>
                     </div>
                 </div>
 
-                <div className="main-card-section">
-                    <div className="cards-section">
-                        <div className="card">
-                            <h1><span className="card-type">FLICK Analytics</span></h1>
-                            <p>Bringing cinematic magic to your fingertips with our immersive movie streaming platform.</p>
-                            <Link to="/product1" style={{ textDecoration: 'none' }} ><a href="#"><button className="card-btn">Learn more about this</button></a></Link>
-                            
-                        </div>
-                        <div className="card">
-                            <h1><span className="card-type">SITE Analytics</span></h1>
-                            <p>Building the future with innovative & advanced digital tools for the civil engineering industry.</p>
-                            <Link to="/product2" style={{ textDecoration: 'none' }} ><a href="../product/product2.html"><button className="card-btn">Learn more about this</button></a></Link>
-                            
-                        </div>
 
-                        <div className="card">
-                            <h1><span className="card-type">MEDICAL Analytics</span></h1>
-                            <p>Revolutionizing healthcare with our intuitive doctor-patient interaction platform.</p>
-                        <button className="card-btn">Learn more about this</button>
-                        </div>
-                        <div className="card">
-                            <h1><span className="card-type">EDU Analytics</span></h1>
-                            <p>Transforming education through engaging and interactive e-learning solutions.</p>
-                            <button className="card-btn">Learn more about this</button>
-                        </div>
+                <div className="main-card-section">
+                    <div className="cards-section-imp">
+                        {productCards.map((card, index) => (
+                            <ProductCard key={index} {...card} />
+                        ))}
                     </div>
                 </div>
             </section>
-            </FadeIn>
 
-
-        
-            {/* <ReviewSlider /> */}
-            
-
-
-            <FadeIn>
-            <section>
+            <section id="integrations" className="integrations-section">
                 <div className="main-integrations">
                     <div className="integration-head">
                         <h5>INTEGRATIONS</h5>
-                        <h2>Don't Replace;</h2>
-                        <h3>Integrate</h3>
+                        <h2>Don't Replace; Integrate</h2>
                     </div>
                     <p>
                         Our website features a suite of intuitive web applications catering to sectors like healthcare,
                         education, and wellness. Through our seamless integration mechanism, users can leverage our advanced
-                        solutions effortlessly, envisioning a future where digital threats are proactively addressed and
-                        remediated.
+                        solutions effortlessly, envisioning a future where digital challenges are proactively addressed and
+                        resolved.
                     </p>
                     <div className="integration-btns">
-                        <button className="schedule-btn ">View all Integrations</button>
-                        <Link to="/shedule" >
-                        <a href="../components/demo.html"><button className="schedule-btn">Schedule a Demo</button></a>
+                        <button className="learn-more-btn">View all Integrations</button>
+                        <Link to="/schedule">
+                            <button className="schedule-btn">Schedule a Demo</button>
                         </Link>
                     </div>
                     <div className="integration-ticks">
-                        <div>
-                            <img src="/correct.png" alt="Tick Icon" />
-                            <p>Works with Popular apps</p>
-                        </div>
-
-                        <div>
-                            <img src="/correct.png" alt="Tick Icon" />
-                            <p>Integrates Flawlessly with SOARs</p>
-                        </div>
-
-                        <div>
-                            <img src="/correct.png" alt="Tick Icon" />
-                            <p>Next-gen features</p>
-                        </div>
+                        {['Works with Popular apps', 'Integrates Flawlessly with SOARs', 'Next-gen features'].map((text, index) => (
+                            <div key={index}>
+                                <img src="/correct.png" alt="Tick Icon" />
+                                <p>{text}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
-            </FadeIn>
 
 
-            <FadeIn>
-            <section>
+            {/* <section id="partners" className="partners-section">
                 <div className="main-partners">
                     <div className="partners-img">
                         <img src="/prd1-bg.png" alt="Partners Background" />
                     </div>
-
                     <div className="partners-right-block">
                         <div className="partners-head">
-                            <h5>PARTNERS</h5>
+                            <h3>PARTNERS</h3>
                             <h2>
-                                Hundreds of Partners,
-                                <br />
-                                One shared Goal:
-                                <br />
+                                Hundreds of Partners,<br />
+                                One shared Goal:<br />
                                 A Safer & Advanced space!
                             </h2>
                         </div>
                         <p>
                             From start-ups to conglomerates, organizations around the globe rely on Indominus Labs to protect
-                            their digital assets. And so, the Indominus Labs partner ecosystem comprises of partners who share
-                            our values, allowing us to offer our customers the most advanced and the latest technology,
-                            together.
+                            their digital assets. Our partner ecosystem comprises partners who share our values, allowing us
+                            to offer our customers the most advanced and latest technology, together.
                         </p>
                         <p className="partners-main-para">
                             100+ Diverse Global Partners, Distributors, Value-Added Vendors, and System Integrators.
                         </p>
                         <div className="partners-btns">
                             <button className="learn-more-btn">View Partners</button>
-                            
-                        
-                        <Link to="/shedule" >
-                        <a href="../components/demo.html"><button className="schedule-btn">Schedule a Demo</button></a>
-                        </Link>
+                            <Link to="/schedule">
+                                <button className="schedule-btn">Schedule a Demo</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
-            </section>
-            </FadeIn>
+            </section> */}
 
             <Footer />
+        </div>
+    );
+};
 
-
-
-
-
-
-
-
-        </>
-    )
-}
-
-export default Home
+export default Home;
