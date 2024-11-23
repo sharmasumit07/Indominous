@@ -1,5 +1,6 @@
 /* General Styles */
-body, html {
+body,
+html {
     margin: 0;
     padding: 1rem;
     box-sizing: border-box;
@@ -132,7 +133,7 @@ a {
     transform: translateY(-10px);
 }
 
-.orange p{
+.orange p {
     margin-top: 3.4rem;
     margin-bottom: 5rem;
 }
@@ -253,3 +254,205 @@ a {
 
 
 
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+
+    /* General Padding Adjustment */
+    body,
+    html {
+        padding: 0.5rem;
+    }
+
+    /* Product2 Intro Section */
+    .product2-intro {
+        flex-direction: column;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .product2-intro-left h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .product2-intro-left p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .product2-main-img {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+
+    .product2-btns {
+        justify-content: center;
+    }
+
+    /* Takedown Process Section */
+    .takedown-process-intro {
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 2rem;
+    }
+
+    .process-intro-left {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .process-intro-main-image,
+    .process-intro-second-image {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .process-intro-second {
+        text-align: center;
+    }
+
+    .process-intro-second h3 {
+        font-size: 1.75rem;
+    }
+
+    .process-intro-second p {
+        font-size: 1rem;
+
+        br {
+            display: none;
+        }
+    }
+
+    /* Cards Section */
+    .cyber-cards {
+        padding: 30px 20px;
+    }
+
+    .cards-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .orange p {
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Demo Request Section */
+    .cyber-second5 {
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+
+    .cyber-second-right {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .intro-ticks {
+        align-items: flex-start;
+        padding: 0 1rem;
+    }
+
+    .ticks {
+        align-items: flex-start;
+    }
+
+    .ticks img {
+        width: 20px;
+        margin-top: 5px;
+    }
+
+    .second-tick-txt {
+        text-align: left;
+    }
+
+    .darkweb-form {
+        width: 100%;
+    }
+
+    /* Form Styles */
+    .request-form-name {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .request-form-name>div {
+        width: 100%;
+    }
+
+    .darkweb-form input {
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+
+    /* Button Adjustments */
+    .schedule-btn,
+    .card-btn,
+    .submit-btn {
+        width: 100%;
+        max-width: 300px;
+        padding: 14px;
+        font-size: 1rem;
+    }
+}
+
+/* Additional breakpoint for very small devices */
+@media screen and (max-width: 480px) {
+    .product2-intro-left h1 {
+        font-size: 1.75rem;
+    }
+
+    .process-intro-second h3 {
+        font-size: 1.5rem;
+    }
+
+    .card h1 {
+        font-size: 1.5rem;
+    }
+
+    .cyber-second-right h3 {
+        font-size: 1.75rem;
+    }
+
+    .ticks {
+        gap: 10px;
+    }
+
+    .second-tick-txt {
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablet Specific Adjustments */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+    .product2-intro,
+    .takedown-process-intro,
+    .cyber-cards,
+    .cyber-second5 {
+        padding: 40px;
+    }
+
+    .product2-main-img {
+        width: 28rem;
+        margin-left: 2rem;
+    }
+
+    .process-intro-main-image {
+        width: 250px;
+    }
+
+    .process-intro-second-image {
+        width: 170px;
+    }
+
+    .darkweb-form {
+        width: 50%;
+    }
+}

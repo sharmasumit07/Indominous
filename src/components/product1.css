@@ -461,41 +461,6 @@ body {
     animation: float 4s ease-in-out infinite;
   }
   
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .product1-intro {
-      flex-direction: column;
-    }
-  
-    .product1-main, .product1-images {
-      width: 100%;
-      text-align: center;
-    }
-  
-    .card-two, .card {
-      width: 100%;
-    }
-  
-    .takedown-process-intro, .cyber-second {
-      flex-direction: column;
-    }
-  
-    .process-intro-second, .cyber-second-right {
-      padding-left: 0;
-      padding-top: 20px;
-    }
-  
-    .request-form-name {
-      flex-direction: column;
-    }
-  
-    .request-form-name > div {
-      width: 100%;
-    }
-  }
-
-
-
 
 
   @keyframes swirlIn {
@@ -511,4 +476,243 @@ body {
 
 .product1-images:hover .product1-main-img {
     transform: scale(1.1) rotate(5deg); /* Scale and rotate on hover */
+}
+
+
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+  /* General container adjustments */
+  .product1-container {
+    padding: 10px;
+  }
+
+  /* Hero section adjustments */
+  .product1-intro {
+    flex-direction: column;
+    margin-top: 40px;
+    padding: 0 20px;
+  }
+
+  .product1-main {
+    text-align: center;
+  }
+
+  .product1-txt {
+    max-width: 100%;
+  }
+
+  .hero-head h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+
+  .wrapper {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .hero-txt {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .hero-txt br {
+    display: none;
+  }
+
+  /* Images section */
+  .product1-images {
+    margin-top: 30px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .product1-main-img,
+  .product1-main-img2 {
+    max-width: 50%;
+    margin: 10px 0;
+  }
+
+  /* Buttons */
+  .product1-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .learn-more-btn,
+  .schedule-btn {
+    width: 100%;
+    max-width: 250px;
+    margin: 5px 0;
+  }
+
+  /* Features section */
+  .cards-section-two {
+    flex-direction: column;
+    margin-left: 0;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .card-2 {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  /* Takedown process section */
+  .takedown-process-intro {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .process-intro-lef img,
+  .process-intro-left img {
+    height: auto;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  .process-intro-second {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .process-intro-second p br {
+    display: none;
+  }
+
+  /* Product cards section */
+
+ 
+
+  .cards-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin-left: 3.5rem;
+    width: 13rem;
+    
+
+  }
+
+  
+
+  .card-btn1 {
+    margin-left: 0;
+    justify-content: center;
+    width: 100%;
+  }
+
+   /* Demo Request Section */
+    .cyber-second5 {
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+
+    .cyber-second-right {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .intro-ticks {
+        align-items: flex-start;
+        padding: 0 1rem;
+    }
+
+    .ticks {
+        align-items: flex-start;
+    }
+
+    .ticks img {
+        width: 20px;
+        margin-top: 5px;
+    }
+
+    .second-tick-txt {
+        text-align: left;
+    }
+
+    .darkweb-form {
+        width: 100%;
+    }
+
+    /* Form Styles */
+    .request-form-name {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .request-form-name>div {
+        width: 100%;
+    }
+
+    .darkweb-form input {
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+
+    /* Button Adjustments */
+    .schedule-btn,
+    .card-btn,
+    .submit-btn {
+        width: 100%;
+        max-width: 300px;
+        padding: 14px;
+        font-size: 1rem;
+    }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+  .hero-head h1 {
+    font-size: 1.75rem;
+  }
+
+  .wrapper {
+    font-size: 1.25rem;
+  }
+
+  .product1-main-img,
+  .product1-main-img2 {
+    max-width: 50%;
+   
+  }
+
+  .card-2 {
+    padding: 1.5rem 1rem;
+  }
+
+  .intro-ticks {
+    margin-top: 15px;
+  }
+}
+
+/* Tablet adjustments */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .product1-container {
+    padding: 15px;
+  }
+
+  .hero-head h1 {
+    font-size: 2.5rem;
+  }
+
+  .cards-section-two {
+    margin-left: 5rem;
+    gap: 2rem;
+  }
+
+  .card-2 {
+    width: 25rem;
+  }
+
+  .product1-main-img,
+  .product1-main-img2 {
+    max-width: 70%;
+  }
 }

@@ -189,11 +189,16 @@
 
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
+
+    .contact-section{
+        height: 50%;
+    }
+
     .contact-container {
         flex-direction: column;
-        max-width: 100%;
-        height: auto;
-        margin-top: 10rem;
+        justify-content: center;
+    
+        
     }
 
     .contact-image {

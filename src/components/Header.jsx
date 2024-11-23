@@ -28,9 +28,9 @@ const Header = () => {
                 setTimeout(() => {
                     setIsPopupOpen(false);
                     setPopupClosing(false);
-                }, 300);
+                }, 150);
             }
-        }, 1000);
+        }, 150);
     };
 
     const toggleMobileMenu = () => {
