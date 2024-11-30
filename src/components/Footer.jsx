@@ -42,7 +42,7 @@ const Footer = () => {
       <div className="footer-bottom">
         <div className="footer-logo">
           <p>Made with <FaHeart className="heart-icon" /> by</p>
-          <img src="/logo2.png" alt="Indominus Labs Logo" className="footer-main-logo" />
+          <img src="/newlogo.png" alt="Indominus Labs Logo" className="footer-main-logo" />
         </div>
         <div className="social-logos">
           <a href="#" aria-label="Instagram"><FaInstagram /></a>
